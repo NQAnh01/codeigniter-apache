@@ -1,0 +1,3 @@
+src/writable/*
+src/tests/*
+src/.env
