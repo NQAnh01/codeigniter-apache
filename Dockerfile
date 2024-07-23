@@ -5,10 +5,10 @@ FROM php:apache
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 
-# 2. set up document root for apache
+# set up document root for apache
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 
-# 3. mod_rewrite for URL rewrite and mod_headers for .htaccess extra headers like Access-Control-Allow-Origin-
+# mod_rewrite for URL rewrite and mod_headers for .htaccess extra headers like Access-Control-Allow-Origin-
 RUN a2enmod rewrite headers
 
 # Cài đặt các extension PHP cần thiết và làm sạch cache
