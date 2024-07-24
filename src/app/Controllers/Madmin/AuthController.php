@@ -3,7 +3,6 @@
 namespace App\Controllers\Madmin;
 
 use App\Controllers\BaseController;
-use CodeIgniter\HTTP\ResponseInterface;
 
 class AuthController extends BaseController
 {
