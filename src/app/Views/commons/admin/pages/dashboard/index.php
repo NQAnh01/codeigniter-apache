@@ -1,17 +1,9 @@
-<?= $this->extend('commons/admin/pages/defaultDashboard') ?>
+<?= $this->extend('commons/admin/pages/dashboard/layout') ?>
 
-<?= $this->section('header') ?>
-    <?= $this->include('commons/admin/inc/header') ?>
+<?= $this->section('content') ?>
+    <?= $content ?>
 <?= $this->endSection() ?>
 
-<?= $this->section('sidebar') ?>
-    <?= $this->include('commons/admin/inc/sidebar') ?>
-<?= $this->endSection() ?>
-
-<?= $this->section('breadcumb') ?>
-    <?= $this->include('commons/admin/inc/breadcumb') ?>
-<?= $this->endSection() ?>
-
-<?= $this->section('footer') ?>
-    <?= $this->include('commons/admin/inc/footer') ?>
+<?= $this->section('content') ?>
+    <?= $this->include('commons/admin/inc/dashboard/script') ?>
 <?= $this->endSection() ?>
