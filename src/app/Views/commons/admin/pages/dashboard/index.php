@@ -1,7 +1,7 @@
 <?= $this->extend('commons/admin/pages/dashboard/layout') ?>
 
 <?= $this->section('content') ?>
-    <?= $content ?>
+    <?= $this->include('commons/admin/inc/dashboard/content') ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
