@@ -7,9 +7,9 @@
     <title>Log in</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- adminLTE -->
-    <link rel="stylesheet" href="<?= base_url('plugins/fontawesome-free/css/all.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('dist/css/adminlte.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('plugins/fontawesome-free/css/all.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('plugins/icheck-bootstrap/icheck-bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('dist/css/adminlte.min.css') ?>">
 </head>
 
 <body class="hold-transition login-page">
