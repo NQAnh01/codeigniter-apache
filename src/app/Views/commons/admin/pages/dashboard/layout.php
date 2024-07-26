@@ -28,6 +28,7 @@
     </div>
 
     <!-- REQUIRED SCRIPTS -->
+    <?php echo $this->renderSection('script') ?>
     <?php echo $this->include('commons/admin/inc/dashboard/script') ?>
 </body>
 

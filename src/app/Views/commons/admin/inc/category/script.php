@@ -1,0 +1,1 @@
+<script src="<?php echo base_url('dist/js/adminlte.js') ?>"></script>
