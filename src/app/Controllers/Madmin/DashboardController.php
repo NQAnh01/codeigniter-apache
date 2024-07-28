@@ -9,11 +9,6 @@ class DashboardController extends MadminController
 {
     public function renderDashboard()
     {
-        $session = session();
-        if (!$session->get('isLoggedIn')) {
-            return redirect()->to('admin/login')->with('error', 'You are not logged in');
-        }
-        
         $view = Services::renderer();
         // Set the title
         $view->setVar('title', 'AdminLTE 3 | Dashboard 2');

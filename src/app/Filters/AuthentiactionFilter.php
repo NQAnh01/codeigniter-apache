@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class UserFilter implements FilterInterface
+class AuthentiactionFilter implements FilterInterface
 {
     /**
      * Do whatever processing this filter needs to do.
@@ -26,7 +26,7 @@ class UserFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if(session()->get('isLoggedIn') == false){
-            return redirect()->to('login')->with('error', 'You are not login');
+            return redirect()->to('/admin/login')->with('error', 'You are not logged in');
         }
     }
 
@@ -44,6 +44,6 @@ class UserFilter implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-            return redirect()->to('admin/dashboard');
+
     }
 }

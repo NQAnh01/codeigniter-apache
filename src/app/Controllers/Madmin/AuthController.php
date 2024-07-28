@@ -26,7 +26,6 @@ class AuthController extends BaseController
 
         if ($user) {
             // Verify password
-            // if (password_verify($password, $user['password'])) {
             if ($password === $user['password']) {
                 // Set session data
                 $sessionData = [
