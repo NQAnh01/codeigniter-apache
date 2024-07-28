@@ -7,18 +7,16 @@ use CodeIgniter\Config\Services;
 
 class DashboardController extends MadminController
 {
-    private function _setRenderSection($viewRenderer, $sectionName, $viewName, $data = []) {
-        $viewRenderer->section($sectionName);
-        echo view($viewName, $data);
-        $viewRenderer->endSection($sectionName);
-    }
-    public function index()
+    public function renderDashboard()
     {
+        $session = session();
+        if (!$session->get('isLoggedIn')) {
+            return redirect()->to('admin/login')->with('error', 'You are not logged in');
+        }
+        
         $view = Services::renderer();
-
         // Set the title
         $view->setVar('title', 'AdminLTE 3 | Dashboard 2');
-
         // Set the content and script sections
         $this->_setRenderSection($view, 'content', 'commons/admin/inc/dashboard/content');
         $this->_setRenderSection($view, 'script', 'commons/admin/inc/dashboard/script');

@@ -17,11 +17,16 @@
         <div class="login-logo">
             <a href="#"><b style="color: blue;">Login</b></a>
         </div>
+        <?php if (session()->getFlashdata('error')): ?>
+            <div style="color: red;">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php endif; ?>
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
-                <form action="#" method="post">
+                <form action="<?= base_url('admin/loginSubmit') ?>" method="post">
                     <div class="input-group mb-4">
                         <input type="email" class="form-control" placeholder="Email" name="email">
                         <div class="input-group-append">
@@ -48,7 +53,6 @@
 
         </div>
     </div>
-
 </body>
 
 </html>

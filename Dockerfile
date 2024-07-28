@@ -14,7 +14,7 @@ RUN a2enmod rewrite headers
 # Cài đặt các extension PHP cần thiết và làm sạch cache
 RUN apt-get update && apt-get install -y \
     libicu-dev \
-    && docker-php-ext-install intl \
+    && docker-php-ext-install intl mysqli pdo pdo_mysql \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
