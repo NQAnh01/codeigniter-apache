@@ -3,42 +3,53 @@ version: "3.8"
 services:
   web:
     build: .
-    container_name: ci4-web
+    container_name: cweb
     ports:
       - "8080:80"
-    volumes:
-      - ./src:/var/www/html
     environment:
       - APACHE_RUN_USER=www-data
       - APACHE_RUN_GROUP=www-data
     restart: always
+    volumes:
+      - ./src:/var/www/html
     networks:
-      - ci4-network
+      - ci4_network
+    depends_on:
+      - db
+
   db:
     image: mysql:8.0
-    container_name: ci4-db
+    container_name: cdb
+    ports:
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: codeigniter4
       MYSQL_USER: user
       MYSQL_PASSWORD: user_password
-    ports:
-      - "3306:3306"
     restart: always
+    volumes:
+      - db_data:/var/lib/mysql
     networks:
-      - ci4-network
+      - ci4_network
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: ci4-phpmyadmin
-    restart: always
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root_password
+    container_name: cphpmyadmin
     ports:
       - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: user
+      PMA_PASSWORD: user_password
+    restart: always
     networks:
-      - ci4-network
+      - ci4_network
+    depends_on:
+      - db
 
 networks:
-  ci4-network:
+  ci4_network:
     driver: bridge
+volumes:
+  db_data:

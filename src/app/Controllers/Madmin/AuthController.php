@@ -25,14 +25,19 @@ class AuthController extends BaseController
         $user = $authModel->where('email', $email)->first();
 
         if ($user) {
+            $hashedPassword = md5($password);
             // Verify password
-            if ($password === $user['password']) {
+            if ($hashedPassword === $user['password']) {
                 // Set session data
                 $sessionData = [
-                    'id'       => $user['id'],
-                    'email'    => $user['email'],
-                    'password' => $password,
-                    'isLoggedIn' => TRUE
+                    'isLoggedIn' => true,
+                    'id' => $user['user_id'],
+                    'user' => [
+                        'user_id' => $user['user_id'],
+                        'name' => $user['name'],
+                        'avatar' => $user['avatar'], // Giả sử bảng users có cột avatar
+                        'email' => $user['email'],
+                    ],
                 ];
                 $session->set($sessionData);
 

@@ -18,17 +18,17 @@
 
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
-        <?php echo $this->include('commons/admin/inc/header') ?>
-        <?php echo $this->include('commons/admin/inc/sidebar') ?>
+        <?php echo $this->renderSection('header') ?>
+        <?php echo $this->renderSection('sidebar') ?>
         <div class="content-wrapper">
-            <?php echo $this->include('commons/admin/inc/breadcrumb') ?>
+            <?php echo $this->renderSection('breadcrumb') ?>
             <?php echo $this->renderSection('content') ?>
         </div>
-        <?php echo $this->include('commons/admin/inc/footer') ?>
+        <?php echo $this->renderSection('footer') ?>
     </div>
 
     <!-- REQUIRED SCRIPTS -->
-    <?php echo $this->renderSection('script') ?>
+    <?php echo $this->renderSection('pageScript') ?>
 </body>
 
 </html>
