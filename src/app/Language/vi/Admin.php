@@ -1,0 +1,25 @@
+<?php
+return [
+    'account_settings'      =>  'Cài đặt tài khoản',
+    'change_password'       =>  'Đổi mật khẩu',
+    'create_new_project'    =>  'Tạo dự án mới',
+    'dashboard'             =>  'Bảng điều khiển',
+    'dashboard_'            =>  'Bảng điều khiển',
+    'development'           =>  'Phát triển',
+    'log_out'               =>  'Đăng xuất',
+    'messages'              =>  'Tin nhắn',
+    'notifications'         =>  'Thông báo',
+    'profile'               =>  'Hồ sơ',
+    'project'               =>  "Dự án",
+    'software'              =>  'Phần mềm',
+    'search_product'        =>  'Tìm kiếm sản phẩm',
+    'see_all_project'       =>  'Xem tất cả dự án',
+    'settings'              =>  'Cài đặt',
+    'testing'               =>  'Kiểm thử',
+    'ui'                    =>  'Giao diện người dùng',
+    'users'                 =>  'Nhân viên',
+    'users_'                =>  'Danh sách Nhân viên',
+    'users_create'          =>  'Thêm Nhân viên',
+    'users_edit'            =>  'Cập nhật Nhân viên',
+    'users_management'      =>  'Quản lí nhân viên'
+];

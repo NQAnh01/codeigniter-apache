@@ -41,7 +41,9 @@ abstract class BaseController extends Controller
      * Be sure to declare properties for any property fetch you initialized.
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
-    protected $session = NULL;
+    // protected $session;
+
+    protected $_view;
 
     /**
      * @return void
@@ -53,12 +55,50 @@ abstract class BaseController extends Controller
 
         // Preload any models, libraries, etc, here.
 
-        $this->session = \Config\Services::session();
+        // E.g.: $this->session = \Config\Services::session();
     }
-    // Set render section
-    public function _setRenderSection($viewRenderer, $sectionName, $viewName, $data = []) {
+
+    public function _setRenderSection($viewRenderer, $sectionName , $viewName, $data = []) {
         $viewRenderer->section($sectionName);
         echo view($viewName, $data);
         $viewRenderer->endSection($sectionName);
+    }
+
+    /**
+     * Success Response
+     *
+     * @param $data
+     * @param string $message
+     * @param array $otherInfo
+     * @param int $code
+     * @param array $headers
+     * @param int $options
+     * @return JsonResponse
+     */
+    public function success($data=null, $message = "", $otherInfo = [], $headers = [], $code = 200,  $options = 0){
+        $response = [
+            'status' => 'success',
+            'message' => $message,
+            'data' => $data,
+        ];
+
+        return $this->response->setStatusCode($code)->setJSON(array_merge($response, $otherInfo), $code, $headers, $options);
+    }
+
+    /**
+     *  Error Response
+     * @param string $message
+     * @param array $otherInfo
+     * @param int $code
+     * @return JsonResponse
+     */
+    public function error($message = '', $otherInfo = [], $code = 400) {
+        $response = [
+            'status' => 'error',
+            'message' => $message,
+            'data' => null
+        ];
+
+        return $this->response->setStatusCode($code)->setJSON(array_merge($response, ['message' => $otherInfo]), $code);
     }
 }

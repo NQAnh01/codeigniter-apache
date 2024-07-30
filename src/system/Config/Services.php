@@ -385,6 +385,7 @@ class Services extends BaseService
         // Use '?:' for empty string check
         $locale = $locale ?: $requestLocale;
 
+        
         return new Language($locale);
     }
 

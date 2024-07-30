@@ -3,23 +3,34 @@
 namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
-use CodeIgniter\I18n\Time;
 
 class UserSeeder extends Seeder
 {
     public function run()
     {
         $data = [
-            'email'    => 'admin@admin.com',
-            'name'     => 'admin',
-            'password' => md5('123123'),
-            'state'    => 1,
-            'role'     => 'admin',
-            'created_at' => Time::now(),
-            'updated_at' => Time::now(),
+            [
+                'name'      => 'admin1',
+                'email'     => 'admin1@admin.com',
+                'password'  => md5('123123'),
+                'role'      => 'admin',
+                'state'     => 1
+            ],
+            [
+                'name'      => 'user1',
+                'email'     => 'user1@example.com',
+                'password'  => md5('123456'),
+                'role'      => 'content',
+                'state'     => 1
+            ],
+            [
+                'name'      => 'user2',
+                'email'     => 'user2@example.com',
+                'password'  => md5('123321'),
+                'role'      => 'editor',
+                'state'     => 1
+            ]
         ];
-
-        // Using Query Builder
-        $this->db->table('users')->insert($data);
+        $this->db->table('users')->insertBatch($data);
     }
 }

@@ -85,8 +85,6 @@ class ListCommands extends BaseCommand
 
     /**
      * Lists the commands with accompanying info.
-     *
-     * @return void
      */
     protected function listFull(array $commands)
     {
@@ -128,8 +126,6 @@ class ListCommands extends BaseCommand
 
     /**
      * Lists the commands only.
-     *
-     * @return void
      */
     protected function listSimple(array $commands)
     {

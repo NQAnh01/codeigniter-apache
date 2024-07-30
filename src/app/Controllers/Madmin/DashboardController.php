@@ -2,30 +2,12 @@
 
 namespace App\Controllers\Madmin;
 
-use App\Controllers\MadminController;
-use CodeIgniter\Config\Services;
+use CodeIgniter\HTTP\ResponseInterface;
 
 class DashboardController extends MadminController
 {
-    public function renderDashboard()
+    public function index()
     {
-        $data = [
-            'title' => 'AdminLTE 3 | Dashboard 2',
-            'breadcrumb_active' => 'Dashboard 2',
-        ];
-
-        return $this->renderView('commons/admin/pages/dashboard/home/index', $data);
-       
+        return $this->renderView('admin/dashboard/home');
     }
-    
-    public function renderGalley()
-    {
-        $data = [
-            'title' => 'AdminLTE 3 | Galley',
-            'breadcrumb_active' => 'Galley',
-        ];
-
-        return $this->renderView('commons/admin/pages/galley/content', $data);
-    }
-
 }

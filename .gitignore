@@ -32,5 +32,6 @@ _server.js
 _issue.json
 _app.js
 /src/writable/
+/src/__MACOSX/
 docker
 Dockerfile
