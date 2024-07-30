@@ -18,28 +18,25 @@ class UserController extends MadminController
 
     public function create()
     {
-        return $this->renderView('admin/users/create');
+        return $this->renderView('admin/users/edit');
     }
 
-    public function createUser()
+    public function storage()
     {
         $data = $this->request->getPost();
-
+        
         $rules = [
             'name' => 'required',
-            'email' => 'required|valid_email|is_unique[users.email]',
-            'password' => 'required',
+            'email' => 'required|valid_email',
         ];
-        $session = Services::session();
-        if (!$this->validate($rules)) {
-            $session = Services::session();
-            $session->setFlashdata('errors', $this->validator->getErrors());
-            return redirect()->back()->withInput();
+        
+        if (!$this->validate($rules, $data)) {
+            return redirect()->route('admin');
         }
-
+        
         $userModel = new Users();
         $data['password'] = md5($data['password']);
-
+        
         $userModel->save($data);
 
         return redirect()->route('admin.users');
@@ -56,16 +53,14 @@ class UserController extends MadminController
         $this->_data['user'] = $user;
         return $this->renderView('admin/users/edit');
     }
-
-    public function store()
-    {
-        
-    }
    
     public function update($id) {
+        
         $data = $this->request->getPost();
         $rules = [
+            'name'      => 'required',
             'email'		=> 'required|valid_email',
+            'phone'     => 'required'
         ];
         $session = Services::session();
         if (!$this->validate($rules, $data)) {
@@ -73,6 +68,11 @@ class UserController extends MadminController
             return redirect()->route('admin.user.edit');
         }
         $userModel = new Users();
+
+        if(isset($data['password'])){
+            $data['password'] = md5($data['password']);
+        }   
+
         $user = $userModel->find($id);
         if (!$user) {
             return redirect()->route('admin.dashboard')->with('error', 'User không tồn tại');

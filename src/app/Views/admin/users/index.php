@@ -48,6 +48,7 @@
 </div>
 
 <form id="deleteForm" method="post" action="">
+	<input type="hidden" name="_method" value="DELETE">
 </form>
 
 <?php $this->section('pageCss'); ?>
@@ -90,7 +91,6 @@
 	function deleteUser(userId) {
         var form = document.getElementById('deleteForm');
         form.action = "admin/users/delete/" + userId;
-        form.method = "post";
         form.submit();
     }
 </script>
